@@ -1,0 +1,1 @@
+This is going to be a proejct to understand networking (sockets) in Java, where i will make a irc chat client 
