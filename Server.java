@@ -3,8 +3,6 @@ import java.io.*; //For IO things
 import java.util.*; //For Scanner
 
 public class Server {
-
-
     public static void main(String args[]) {
         //int portNum = Integer.parseInt(args[0]); //can be something i.e. 4999
         int portNum = 5000;
@@ -12,14 +10,31 @@ public class Server {
             //Testing Socket Connection 
             ServerSocket serverSocket = new ServerSocket(portNum);
             System.out.println("Starting Server.");
-
             //TODO: For being able to contiously accept clients, we can do a while(true) loop around clientSocket in order to accept more clients
             //Aside: To get this to work right, we need to use multiple threads for multiple users
             while (true) {
-
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Client Connected.");
                 //int userNum = 0;
+                HandleClient handleClient = new HandleClient(clientSocket);
+                handleClient.start();
+                //Currently there is an issue when trying to close the server socket where a problem occurs SocketClosed Error, so i am temporarily removing the serverSocket.close()
+                //serverSocket.close(); //server never closes if i don't manually do it
+            }
+            //serverSocket.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+//TODO: Remove this later
+/*
                 Thread thread = new Thread() {
                     //TODO: Issue with userNums changing depending on user
                     //int userNum = 0;
@@ -56,12 +71,6 @@ public class Server {
                         }
                     }
                 };
-                thread.start();
+                */
+                //thread.start();
                 //serverSocket.close();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
