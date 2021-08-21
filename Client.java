@@ -26,8 +26,8 @@ public class Client {
             Socket socket = new Socket(hostName, portNum);
             System.out.println("Connected to IRC Server");
             //try {
-                new readData(socket, this).start();
-                new writeData(socket, this).start();
+                new ReadData(socket, this).start();
+                new WriteData(socket, this).start();
             //}
             //catch (UnknownHostException e) {
             //    e.printStackTrace();
