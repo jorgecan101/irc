@@ -1,6 +1,6 @@
 import java.net.*; //For socket things
 import java.io.*; //For IO things
-import java.util.*; //For Scanner
+//import java.util.*; //For Scanner
 
 
 public class Client {
@@ -15,8 +15,10 @@ public class Client {
 
 
     public static void main(String args[]) {
+        //hardcoding these right now
         String hostName = "localhost";
         int portNum = 5000;
+
         Client client = new Client(hostName, portNum);
         client.start(hostName, portNum);
     }

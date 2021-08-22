@@ -61,12 +61,12 @@ public class Server {
     }
 
     //when we want get the username
-    Set<String> getUserName() {
+    public Set<String> getUserName() {
         return this.userNames;
     }
 
     //check if anyone is connected. return true if there are other users connected
-    boolean usersOn() {
+    public boolean hasUsers() {
         return !this.userNames.isEmpty();
     }
     //we want to remove people (the thread as well)
